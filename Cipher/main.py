@@ -5,6 +5,6 @@ message = 'DRPWPWXHDRDKDUBKIHQVQRIKPGWOVOESWPKPVOBBDVVVDXSURWRLUEBKOLVHIHBKHLHBL
 foo = decryption_obejct(message)
 foo.open_file()
 for i in range(26):
-    for j in range(2,10):
-        foo.setup_matrix(foo.return_ascii_ciphered_list(i), j)
+    for j in range(2,7):
+        foo.setup_matrix(foo.return_ascii_ciphered_list(i), j, i)
         sys.stdout.write("New Caesar Key\n")
