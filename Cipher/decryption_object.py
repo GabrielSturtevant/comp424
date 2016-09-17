@@ -17,6 +17,7 @@ class decryption_obejct:
 		self.list_of_characters = list(self.character_string)
 		self.ascii_list(self.list_of_characters)
 		self.key_permutations = get_column_swap()
+		self._popular_words = list(set(popular_words))
 		#self.q = Queue.Queue()
 	
 	def ascii_list(self, chars):
@@ -71,11 +72,10 @@ class decryption_obejct:
 		results
 		num_of_words = 0
 		results = results.replace("#", "")
-		for word in popular_words:
-			if len(word) > 3:
-				if word.upper() in results:
-					num_of_words += 1
-					results_words += " {}".format(word)
+		for word in self._popular_words:
+			if word in results:
+				num_of_words += 1
+				results_words += " {}".format(word)
 		results += " -- {0}\n{1}, Caesar Key:{2}, Column Key:{3}\n".format(num_of_words, results_words, caesar_key,x)
 		if num_of_words:
 			self.file_var.write(results)
