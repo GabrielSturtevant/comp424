@@ -55,18 +55,29 @@ class decryption_obejct:
 			index_val = x[i]
 			columnar_transposed_list[:, i] = list_to_modify[:, index_val - 1]
 		columnar_transposed_list = columnar_transposed_list.tolist()
-		results = ""
+		results = []
+		temp_results = []
 		for z in columnar_transposed_list:
 			for y in z:
-				results += chr(y)
+				temp_results.append(y)
+			results.append(temp_results)
+			temp_results = []
+		results = (Matrix(results)).tolist()#.transpose()).tolist()
+		string_of_chars = ""
+		for i in results:
+			for j in i:
+				string_of_chars += chr(j)
+		results = string_of_chars
+		results
 		num_of_words = 0
 		results = results.replace("#", "")
 		for word in popular_words:
-			if word.upper() in results:
-				num_of_words += 1
-				results_words += " {}".format(word)
+			if len(word) > 3:
+				if word.upper() in results:
+					num_of_words += 1
+					results_words += " {}".format(word)
 		results += " -- {0}\n{1}, Caesar Key:{2}, Column Key:{3}\n".format(num_of_words, results_words, caesar_key,x)
-		if num_of_words > 3:
+		if num_of_words:
 			self.file_var.write(results)
 		
 	
