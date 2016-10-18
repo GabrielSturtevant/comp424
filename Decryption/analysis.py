@@ -1,3 +1,13 @@
+#!/usr/bin/python
+
+# This script was used to analyze the frequency with which the letters of the encrypted message appeared. This helped me
+# determine which offset was used for the caesar cipher. It takes a message and runs through all 26 permutations of the
+# the caesar cipher, outputting each one to a file named analysis.txt in descending order from most commonly used letter
+# to least commonly used.
+#
+# This script is atomic and is not used in the decryption program.
+
+
 def cipher(lst, key):
 	to_return = []
 	ascii_lst = []
@@ -6,13 +16,12 @@ def cipher(lst, key):
 	for x in ascii_lst:
 		x -= key
 		if x < 65 and not x == 35:
-			
 			x += 26
 		to_return.append(chr(x))
 	return to_return
 
 
-def i_dunno():
+def analyze_letter_frequency():
 	message = 'DRPWPWXHDRDKDUBKIHQVQRIKPGWOVOESWPKPVOBBDVVVDXSURWRLUEBKOLVHIHBKHLHBLNDQRFLOQ'
 	to_write = open('./analysis.txt', 'w+')
 	
@@ -39,4 +48,4 @@ def refresh():
 		library['{}'.format(chr(x))] = 0
 	return library
 
-i_dunno()
+analyze_letter_frequency()

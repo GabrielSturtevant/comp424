@@ -1,4 +1,10 @@
+#!/usr/bin/python
+
+# This script will take the raw program output, parse it, make it easier to read and organize it in descending order of
+# of number of words contained in the output string.
+
 from operator import itemgetter
+import os
 
 
 def organize_results():
@@ -29,7 +35,7 @@ def organize_results():
 			num += 1
 	result_set = sorted(result_set, key=itemgetter(0), reverse=True)
 	file_var.close()
-	file_var = open('./results_formatted.txt', 'w')
+	file_var = open('./results.txt', 'w')
 	for x in result_set:
 		var = "{1}\n{0} -- Number of words\nWords:\n".format(x[0],x[1])
 		for y in x[2].split(" "):
@@ -38,3 +44,4 @@ def organize_results():
 		var += "{0}\n{1}\n\n\n".format(x[3].replace(":", " : "), x[4].replace("(", " ").replace(")", ""))
 		file_var.write(var)
 	file_var.close()
+	os.remove('results_raw.txt')

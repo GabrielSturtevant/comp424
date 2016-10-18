@@ -1,3 +1,8 @@
+#!/usr/bin/python
+
+# This script returns a dictionary containing all possible column key permutations in the range of 2-10. This is then
+# used by the decryption object to check individual column keys.
+
 from itertools import permutations
 
 

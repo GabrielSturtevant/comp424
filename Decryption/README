@@ -1,0 +1,14 @@
+In order to run this program, you need to have installed psutil via pip. If you don't want to go through this extra
+step, you may circumvent it by commenting out line 10 in DecryptionObject, and replacing "cpu_count()" on line 98 of
+the same file with an integer value representing then number of cores in your CPU.
+
+In order to run the analysis.py file, simply run "python analysis.py"
+Execution results will be in "analysis.txt"
+To run the main program, ensure that the settings in Main.py are appropriate, then run "python Main.py"
+Execution results will be in "results.txt"
+The most likely contender for the provided settings will appear at the top of the results.txt file
+
+Of note, when running the program, it will output text to the standard output saying which Caesar Key it has completed.
+Completion of a given key includes running through all of the column permutations that the user specified. So when
+checking keys 3-10, and columns 2-5, when it the program says it has completed key 3, that means that it has run caesar
+key 3 through column permutations 2-5.
